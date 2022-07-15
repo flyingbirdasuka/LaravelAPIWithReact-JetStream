@@ -4,36 +4,6 @@
 
 <div class="content-body" style="min-height: 935px;">
     <div class="container-fluid">
-        <div class="modal fade" id="addProjectSidebar">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create Project</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label class="text-black font-w500">Project Name</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="text-black font-w500">Deadline</label>
-                                <input type="date" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="text-black font-w500">Client Name</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-primary">CREATE</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
@@ -57,9 +27,8 @@
                                         <th><strong>ADDRESS</strong></th>
                                         <th><strong>EMAIL</strong></th>
                                         <th><strong>PHONE</strong></th>
-                                        <th><strong>FACEBOOK</strong></th>
-                                        <th><strong>INSTAGRAM</strong></th>
-                                        <th><strong>YOUTUBE</strong></th>
+                                        <th><strong>LINKEDIN</strong></th>
+                                        <th><strong>GITHUB</strong></th>
                                         <th><strong>FOOTER CREDIT</strong></th>
                                     </tr>
                                 </thead>
@@ -69,9 +38,8 @@
                                         <td>{{ $item->address}}</td>
                                         <td>{{ $item->email}}</td>
                                         <td>{{ $item->phone}}</td>
-                                        <td>{{ $item->facebook}}</td>
-                                        <td>{{ $item->instagram}}</td>
-                                        <td>{{ $item->youtube}}</td>
+                                        <td>{{ $item->linkedin}}</td>
+                                        <td>{{ $item->github}}</td>
                                         <td>{{ $item->footer_credit}}</td>
                                         <td>
                                             <div class="dropdown">

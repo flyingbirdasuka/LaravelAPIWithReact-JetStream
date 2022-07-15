@@ -4,17 +4,6 @@
 
 <div class="content-body" style="min-height: 935px;">
     <div class="container-fluid">
-        <div class="modal fade" id="addProjectSidebar">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create Project</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
@@ -35,9 +24,9 @@
                             <form method="post" action="{{route('portfolio.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="info-title">Short Title</label>
-                                    <input class="form-control" name="short_title" id="short_title" type="text">
-                                    @error('short_title')
+                                    <label class="info-title">Title</label>
+                                    <input class="form-control" name="title" id="title" type="text">
+                                    @error('title')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
@@ -47,34 +36,26 @@
                                     @error('short_description')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
-                                </div>
-                                 <div class="form-group">
-                                    <label class="info-title">Long Title</label>
-                                    <input class="form-control" name="long_title" id="long_title" type="text">
-                                </div>
                                 <div class="form-group">
                                     <label class="info-title">Long Description</label>
                                     <textarea class="form-control" name="long_description" rows="4" id="long_description"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Total Duration</label>
-                                    <input class="form-control" name="total_duration" id="total_duration" type="text">
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Total Lecture</label>
-                                    <input class="form-control" name="total_lecture" id="otal_lecture" type="text">
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Total Student</label>
-                                    <input class="form-control" name="total_student" id="total_student" type="text">
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title">Skill All</label>
                                     <input class="form-control" name="skill_all" id="skill_all" type="text">
                                 </div>
                                 <div class="form-group">
+                                    <label class="info-title">Filter</label>
+                                    <input class="form-control" name="filter" id="fileter" type="text">
+                                </div>
+                                <div class="form-group">
                                     <label class="info-title">Video URL</label>
-                                    <input class="form-control" name="video_url" id="video_url" type="text">
+                                    <input id="video" class="form-control" name="video_url" id="video_url" type="file" class="custom-file-input">
+                                </div>
+                                 <div class="form-group">
+                                    <video width="320" height="240" controls>
+                                        <source id="showVideo" src="" style="width:100px; height:100px;"type="video/mp4">
+                                    </video>        
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -88,7 +69,7 @@
                                     <img id="showImage" src="{{ url('upload/no_image.jpg')}}" style="width:100px; height:100px;">
                                     </div>
                                 </div>
-                                <input type="submit" class="btn btn-success" value="Add Service">
+                                <input type="submit" class="btn btn-success" value="Add Portfolio">
                             </form>
                         </div>
                     </div>
@@ -99,10 +80,10 @@
 </div>
 <script>
     $(document).ready(function(){
-        $('#image').change(function(e){
+        $('#image, #video').change(function(e){
             var reader = new FileReader();
             reader.onload = function(e){
-                $('#showImage').attr('src', e.target.result);
+                $('#showImage, #showVideo').attr('src', e.target.result);
             }
             reader.readAsDataURL(e.target.files['0']);
         });

@@ -4,17 +4,6 @@
 
 <div class="content-body" style="min-height: 935px;">
     <div class="container-fluid">
-        <div class="modal fade" id="addProjectSidebar">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create Project</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
@@ -50,27 +39,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title">Tech Description</label>
-                                    <textarea class="form-control" name="tech_description" rows="4" id="comment">{{$homecontent->tech_description}}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Total Student</label>
-                                    <input class="form-control" name="total_student" id="total_student" type="text" value="{{$homecontent->total_student}}">
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Total Course</label>
-                                    <input class="form-control" name="total_course" id="total_course" type="text" value="{{$homecontent->total_course}}">
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Total Review</label>
-                                    <input class="form-control" name="total_review" id="total_review" type="text" value="{{$homecontent->total_review}}">
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Video Description</label>
-                                    <textarea class="form-control" name="video_description" id="video_description" rows="4" >{{$homecontent->video_description}}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Video URL</label>
-                                    <input class="form-control" name="video_url" id="video_url" type="text" value="{{$homecontent->video_url}}">
+                                    <textarea class="form-control" name="tech_description" rows="4" id="summernote">{{$homecontent->tech_description}}</textarea>
                                 </div>
                                 <input type="submit" class="btn btn-success" value="Update Home Content">
                             </form>
@@ -81,5 +50,12 @@
         </div>            
     </div>
 </div>
-
+       <!-- summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script type="text/javascript">
+    $('#summernote').summernote({
+        height: 400
+    });
+</script>
 @include('admin.footer')

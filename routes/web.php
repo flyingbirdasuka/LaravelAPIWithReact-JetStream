@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Admin\InformationController;
-use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\WorkController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\HomePageEtcController;
 use App\Http\Controllers\Admin\ClientReviewController;
@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\ContactController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| routes are loaded by the RouteeducationProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
 */
@@ -58,22 +58,22 @@ Route::prefix('information')->group(function(){
     Route::get('/delete/{id}', [InformationController::class, 'deleteInformation' ])->name('information.delete');
 });
 
-Route::prefix('service')->group(function(){
-    Route::get('/all', [ServiceController::class, 'allService' ])->name('service.all');
-    Route::get('/add', [ServiceController::class, 'addService' ])->name('service.add');
-    Route::post('/store', [ServiceController::class, 'storeService' ])->name('service.store');
-    Route::get('/edit/{id}', [ServiceController::class, 'editService' ])->name('service.edit');
-    Route::post('/update/{id}', [ServiceController::class, 'updateService' ])->name('service.update');
-    Route::get('/delete/{id}', [ServiceController::class, 'deleteService' ])->name('service.delete');
+Route::prefix('education')->group(function(){
+    Route::get('/all', [EducationController::class, 'allEducation' ])->name('education.all');
+    Route::get('/add', [EducationController::class, 'addEducation' ])->name('education.add');
+    Route::post('/store', [EducationController::class, 'storeEducation' ])->name('education.store');
+    Route::get('/edit/{id}', [EducationController::class, 'editEducation' ])->name('education.edit');
+    Route::post('/update/{id}', [EducationController::class, 'updateEducation' ])->name('education.update');
+    Route::get('/delete/{id}', [EducationController::class, 'deleteEducation' ])->name('education.delete');
 });
 
-Route::prefix('project')->group(function(){
-    Route::get('/all', [ProjectController::class, 'allProject' ])->name('project.all');
-    Route::get('/add', [ProjectController::class, 'addProject' ])->name('project.add');
-    Route::post('/store', [ProjectController::class, 'storeProject' ])->name('project.store');
-    Route::get('/edit/{id}', [ProjectController::class, 'editProject' ])->name('project.edit');
-    Route::post('/update/{id}', [ProjectController::class, 'updateProject' ])->name('project.update');
-    Route::get('/delete/{id}', [ProjectController::class, 'deleteProject' ])->name('project.delete');
+Route::prefix('work')->group(function(){
+    Route::get('/all', [WorkController::class, 'allWork' ])->name('work.all');
+    Route::get('/add', [WorkController::class, 'addWork' ])->name('work.add');
+    Route::post('/store', [WorkController::class, 'storeWork' ])->name('work.store');
+    Route::get('/edit/{id}', [WorkController::class, 'editWork' ])->name('work.edit');
+    Route::post('/update/{id}', [WorkController::class, 'updateWork' ])->name('work.update');
+    Route::get('/delete/{id}', [WorkController::class, 'deleteWork' ])->name('work.delete');
 });
 
 
@@ -93,16 +93,6 @@ Route::prefix('home')->group(function(){
     Route::get('/edit/{id}', [HomePageEtcController::class, 'editHomeContent' ])->name('homecontent.edit');
     Route::post('/update/{id}', [HomePageEtcController::class, 'updateHomeContent' ])->name('homecontent.update');
     Route::get('/delete/{id}', [HomePageEtcController::class, 'deleteHomeContent' ])->name('homecontent.delete');
-});
-
-
-Route::prefix('review')->group(function(){
-    Route::get('/all', [ClientReviewController::class, 'allReview' ])->name('review.all');
-    Route::get('/add', [ClientReviewController::class, 'addReview' ])->name('review.add');
-    Route::post('/store', [ClientReviewController::class, 'storeReview' ])->name('review.store');
-    Route::get('/edit/{id}', [ClientReviewController::class, 'editReview' ])->name('review.edit');
-    Route::post('/update/{id}', [ClientReviewController::class, 'updateReview' ])->name('review.update');
-    Route::get('/delete/{id}', [ClientReviewController::class, 'deleteReview' ])->name('review.delete');
 });
 
 

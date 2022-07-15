@@ -11,7 +11,8 @@ use App\Http\Controllers\Admin\InformationController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\HomePageEtcController;
-
+use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\WorkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,10 @@ use App\Http\Controllers\Admin\HomePageEtcController;
 
 Route::get('/chartdata', [ChartController::class, 'onSelectAll' ]);
 
-Route::get('/clientreview', [ClientReviewController::class, 'onSelectAll' ]);
-
 Route::post('/contact', [ContactController::class, 'onContactSent' ]);
+
+Route::get('/educationall', [EducationController::class, 'onSelectAll' ]);
+Route::get('/workall', [WorkController::class, 'onSelectAll' ]);
 
 Route::get('/portfoliohome', [PortfolioController::class, 'onSelectFour' ]);
 Route::get('/portfolioall', [PortfolioController::class, 'onSelectAll' ]);
@@ -39,13 +41,8 @@ Route::get('/footerdata', [FooterController::class, 'onSelectAll' ]);
 
 Route::get('/information', [InformationController::class, 'onSelectAll' ]);
 
-Route::get('/services', [ServiceController::class, 'serviceView' ]);
-
-Route::get('/projecthome', [ProjectController::class, 'onSelectThree' ]);
-Route::get('/projectall', [ProjectController::class, 'onSelectAll' ]);
-Route::get('/projectdetails/{projectId}', [ProjectController::class, 'onSelectDetails' ]);
-
-Route::get('/home/video', [HomePageEtcController::class, 'selectVideo' ]);
 Route::get('/totalhome', [HomePageEtcController::class, 'selectTotalHome' ]);
 Route::get('/techhome', [HomePageEtcController::class, 'selectTechHome' ]);
 Route::get('/homepage/title', [HomePageEtcController::class, 'selectHomeTitle' ]);
+
+
