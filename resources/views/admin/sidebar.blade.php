@@ -59,8 +59,8 @@
                     <span class="nav-text">Portfolio</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('portfolio.all')}}">All Courses</a></li>
-                    <li><a href="{{ route('portfolio.add')}}">Add Course</a></li>
+                    <li><a href="{{ route('portfolio.all')}}">All Portfolios</a></li>
+                    <li><a href="{{ route('portfolio.add')}}">Add Portfolio</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
