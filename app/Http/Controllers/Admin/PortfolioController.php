@@ -49,7 +49,9 @@ class PortfolioController extends Controller
         $image = $request->file('small_img');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(512, 512)->save('upload/portfolio/'. $name_gen); 
-        $save_url = 'http://udemy-rapi.test/upload/portfolio/' . $name_gen;
+        //$save_url = 'http://udemy-rapi.test/upload/portfolio/' . $name_gen;
+        $save_url = env('APP_URL', false) . '/upload/portfolio/' . $name_gen;
+        
 
         $fileName = $request->file('video_url')->getClientOriginalName();
         $filePath = 'videos/' . $fileName;
@@ -83,7 +85,9 @@ class PortfolioController extends Controller
             $image = $request->file('small_img');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(512, 512)->save('upload/portfolio/'. $name_gen); 
-            $save_url = 'http://udemy-rapi.test/upload/portfolio/' . $name_gen;
+            // $save_url = 'http://udemy-rapi.test/upload/portfolio/' . $name_gen;
+            $save_url = env('APP_URL', false) . '/upload/portfolio/' . $name_gen;
+
 
             $fileName = $request->file('video_url')->getClientOriginalName();
             $filePath = 'videos/' . $fileName;
