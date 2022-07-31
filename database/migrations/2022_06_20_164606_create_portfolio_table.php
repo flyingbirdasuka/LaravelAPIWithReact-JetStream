@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('long_description');
             $table->text('skill_all');
             $table->string('video_url');
-            $table->string('filter')
+            $table->string('filter');
             $table->timestamps();
         });
     }
