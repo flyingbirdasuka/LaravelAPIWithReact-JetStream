@@ -8,12 +8,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libzip-dev \
     zlib1g-dev \
     libpq-dev \
+    libicu-dev \
+    libxml2-dev \
     zip \
     unzip \
     git \
     curl \
     && docker-php-ext-configure zip \
-    && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip mbstring exif pcntl bcmath gd \
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip mbstring exif pcntl bcmath gd intl xml \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Enable Apache mod_rewrite for Laravel routes
@@ -22,8 +24,11 @@ RUN a2enmod rewrite
 # Set working directory inside the container
 WORKDIR /var/www/html
 
-# Copy project files with proper permissions for www-data user
+# Copy project files with proper permissions
 COPY --chown=www-data:www-data . /var/www/html
+
+# Fix permissions before composer install
+RUN chown -R www-data:www-data /var/www/html
 
 # Install Composer globally
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -39,3 +44,4 @@ EXPOSE 80
 
 # Start Apache in the foreground
 CMD ["apache2-foreground"]
+
