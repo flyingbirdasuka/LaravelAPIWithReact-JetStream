@@ -1,5 +1,5 @@
 # Use official PHP 8.2 image with Apache
-FROM php:8.2-apache
+FROM php:8.1-apache
 
 # Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -22,6 +22,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Enable Apache mod_rewrite for Laravel routes
 RUN a2enmod rewrite
 
+# Update Apache site config to use Laravel public/ directory
+RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
+
 # Set working directory inside the container
 WORKDIR /var/www/html
 
@@ -42,6 +45,7 @@ EXPOSE 80
 
 # Run setup commands and start Apache
 CMD bash -c "\
+    git config --global --add safe.directory /var/www/html && \
     composer install --optimize-autoloader --no-dev --prefer-dist --no-progress && \
     php artisan key:generate && \
     php artisan migrate --force && \
