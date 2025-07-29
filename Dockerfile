@@ -47,6 +47,5 @@ EXPOSE 80
 CMD bash -c "\
     git config --global --add safe.directory /var/www/html && \
     composer install --optimize-autoloader --no-dev --prefer-dist --no-progress && \
-    php artisan key:generate && \
     php artisan migrate --force && \
     apache2-foreground"
