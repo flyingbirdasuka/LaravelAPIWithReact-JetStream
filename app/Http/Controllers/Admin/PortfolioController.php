@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Portfolio;
+
 use Image;
 
 class PortfolioController extends Controller
@@ -36,29 +38,34 @@ class PortfolioController extends Controller
 
     public function storePortfolio(Request $request){
         $request->validate([
-            'short_title' => 'required',
+            'title' => 'required',
             'short_description' => 'required',
             'small_img' => 'required',       
         ], [
-            'short_title.required' => 'Input Short Title',
+            'title.required' => 'Input Title',
             'short_description.required' => 'Input Short Description',
         ]);
 
         $image = $request->file('small_img');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(512, 512)->save('upload/portfolio/'. $name_gen); 
-        $save_url = 'http://udemy-rapi.test/upload/portfolio/' . $name_gen;
+        //$save_url = 'http://udemy-rapi.test/upload/portfolio/' . $name_gen;
+        $save_url = env('APP_URL', false) . '/upload/portfolio/' . $name_gen;
+        
+
+        $fileName = $request->file('video_url')->getClientOriginalName();
+        $filePath = 'videos/' . $fileName;
+        $isFileUploaded = Storage::disk('public')->put($filePath, file_get_contents($request->file('video_url')));
+        $video_url = Storage::disk('public')->url($filePath);
+
         Portfolio::insert([
-            'short_title' => $request->short_title,
+            'title' => $request->title,
             'short_description' => $request->short_description,
-            'small_img'  => $save_url, 
-            'long_title'  => $request->long_title,  
+            'small_img'  => $save_url,  
             'long_description'  => $request->long_description,   
-            'total_duration'  => $request->total_duration, 
-            'total_lecture'  => $request->total_lecture, 
-            'total_student'  => $request->total_student, 
             'skill_all'  => $request->skill_all,  
-            'video_url'  => $request->video_url,    
+            'filter'  => $request->filter,  
+            'video_url'  => $video_url,    
         ]);
 
         $notification = array(
@@ -78,31 +85,37 @@ class PortfolioController extends Controller
             $image = $request->file('small_img');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(512, 512)->save('upload/portfolio/'. $name_gen); 
-            $save_url = 'http://udemy-rapi.test/upload/portfolio/' . $name_gen;
+            // $save_url = 'http://udemy-rapi.test/upload/portfolio/' . $name_gen;
+            $save_url = env('APP_URL', false) . '/upload/portfolio/' . $name_gen;
 
+
+            $fileName = $request->file('video_url')->getClientOriginalName();
+            $filePath = 'videos/' . $fileName;
+            $isFileUploaded = Storage::disk('public')->put($filePath, file_get_contents($request->file('video_url')));
+            $video_url = Storage::disk('public')->url($filePath);
+            
             Portfolio::findOrFail($id)->update([
-                'short_title' => $request->short_title,
+                'title' => $request->title,
                 'short_description' => $request->short_description,
                 'small_img'  => $save_url, 
-                'long_title'  => $request->long_title,  
-                'long_description'  => $request->long_description,   
-                'total_duration'  => $request->total_duration, 
-                'total_lecture'  => $request->total_lecture, 
-                'total_student'  => $request->total_student, 
+                'long_description'  => $request->long_description,  
                 'skill_all'  => $request->skill_all,  
-                'video_url'  => $request->video_url,      
+                'filter'  => $request->filter,  
+                'video_url'  => $video_url,      
             ]);
         }else{
+            $fileName = $request->file('video_url')->getClientOriginalName();
+            $filePath = 'videos/' . $fileName;
+            $isFileUploaded = Storage::disk('public')->put($filePath, file_get_contents($request->file('video_url')));
+            $video_url = Storage::disk('public')->url($filePath);
+
             Portfolio::findOrFail($id)->update([
-                'short_title' => $request->short_title,
+                'title' => $request->title,
                 'short_description' => $request->short_description,
-                'long_title'  => $request->long_title,  
                 'long_description'  => $request->long_description,   
-                'total_duration'  => $request->total_duration, 
-                'total_lecture'  => $request->total_lecture, 
-                'total_student'  => $request->total_student, 
                 'skill_all'  => $request->skill_all,  
-                'video_url'  => $request->video_url,      
+                'filter'  => $request->filter,  
+                'video_url'  => $video_url,      
             ]);
         }   
         $notification = array(
