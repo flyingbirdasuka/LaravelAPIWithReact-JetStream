@@ -35,20 +35,8 @@
                             <form method="post" action="{{route('information.update', $information->id)}}" >
                                 @csrf
                                 <div class="form-group">
-                                    <label class="info-title">About Information</label>
+                                    <label class="info-title">About Me</label>
                                     <textarea class="form-control" name="about" id="summernote">{{$information->about}}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Refund Policy</label>
-                                    <textarea class="form-control" name="refund" id="summernote2">{{$information->refund}}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Terms and Condition</label>
-                                    <textarea class="form-control" name="terms" id="summernote3">{{$information->terms}}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Privay Policy</label>
-                                    <textarea class="form-control" name="privacy" id="summernote4">{{$information->privacy}}</textarea>
                                 </div>
                                 <input type="submit" class="btn btn-success" value="Update Information">
                             </form>
@@ -64,7 +52,7 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script type="text/javascript">
-    $('#summernote,#summernote2, #summernote3, #summernote4 ').summernote({
+    $('#summernote').summernote({
         height: 400
     });
 </script>

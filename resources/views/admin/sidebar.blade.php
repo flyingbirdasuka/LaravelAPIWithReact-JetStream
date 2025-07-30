@@ -28,7 +28,7 @@
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-061-puzzle"></i>
+                    <i class="fa fa-smile-o"></i>
                     <span class="nav-text">Information</span>
                 </a>
                 <ul aria-expanded="false">
@@ -37,21 +37,21 @@
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                     <i class="flaticon-381-settings-2"></i>
-                    <span class="nav-text">Services</span>
+                     <i class="fa fa-graduation-cap"></i>
+                    <span class="nav-text">Education</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('service.all')}}">All Services</a></li>
-                    <li><a href="{{ route('service.add')}}">Add Service</a></li>
+                    <li><a href="{{ route('education.all')}}">All Education</a></li>
+                    <li><a href="{{ route('education.add')}}">Add Education</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-053-heart"></i>
-                    <span class="nav-text">Projects</span>
+                    <span class="nav-text">Work</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('project.all')}}">All Projects</a></li>
-                    <li><a href="{{ route('project.add')}}">Add Project</a></li>
+                    <li><a href="{{ route('work.all')}}">All Works</a></li>
+                    <li><a href="{{ route('work.add')}}">Add Work</a></li>
                 </ul>
             </li>
            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
@@ -59,26 +59,8 @@
                     <span class="nav-text">Portfolio</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('portfolio.all')}}">All Courses</a></li>
-                    <li><a href="{{ route('portfolio.add')}}">Add Course</a></li>
-                </ul>
-            </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="fa fa-smile-o"></i>
-                    <span class="nav-text">Client Review</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('review.all')}}">All Review</a></li>
-                    <li><a href="{{ route('review.add')}}">Add Review</a></li>
-                </ul>
-
-            </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="fa fa-arrows"></i>
-                    <span class="nav-text">Footer Content</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('footer.all')}}">All Footer Content</a></li>
+                    <li><a href="{{ route('portfolio.all')}}">All Portfolios</a></li>
+                    <li><a href="{{ route('portfolio.add')}}">Add Portfolio</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
@@ -90,7 +72,15 @@
                     <li><a href="{{ route('chart.add')}}">Add Chart Content</a></li>
                 </ul>
             </li>
-            
+                        <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="fa fa-arrows"></i>
+                    <span class="nav-text">Footer Content</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('footer.all')}}">All Footer Content</a></li>
+                </ul>
+            </li>
+
         </ul>
             
 		<div class="copyright">

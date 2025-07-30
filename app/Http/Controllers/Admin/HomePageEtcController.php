@@ -48,12 +48,7 @@ class HomePageEtcController extends Controller
         HomePageEtc::insert([
             'home_title' => $request->home_title,
             'home_subtitle' => $request->home_subtitle,
-            'tech_description' => $request->tech_description,
-            'total_student' => $request->total_student,  
-            'total_course' => $request->total_course,
-            'total_review' => $request->total_review,
-            'video_description' => $request->video_description,
-            'video_url' => $request->video_url,       
+            'tech_description' => $request->tech_description,     
         ]);
         $notification = array(
             'message' => 'Home Content added!',
@@ -71,12 +66,7 @@ class HomePageEtcController extends Controller
         HomePageEtc::findOrFail($id)->update([
             'home_title' => $request->home_title,
             'home_subtitle' => $request->home_subtitle,
-            'tech_description' => $request->tech_description,
-            'total_student' => $request->total_student,  
-            'total_course' => $request->total_course,
-            'total_review' => $request->total_review,
-            'video_description' => $request->video_description,
-            'video_url' => $request->video_url,       
+            'tech_description' => $request->tech_description,     
         ]);
         $notification = array(
             'message' => 'Home Content updated!',

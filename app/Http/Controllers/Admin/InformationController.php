@@ -24,10 +24,7 @@ class InformationController extends Controller
 
     public function storeInformation(Request $request){
     	Information::insert([
-    		'about' => $request->about,
-			'refund' => $request->refund,
-			'terms' => $request->terms,
-			'privacy' => $request->privacy,    		
+    		'about' => $request->about,  		
     	]);
     	$notification = array(
             'message' => 'Information added!',
@@ -43,10 +40,7 @@ class InformationController extends Controller
 
     public function updateInformation(request $request, $id){
     	Information::findOrFail($id)->update([
-    		'about' => $request->about,
-			'refund' => $request->refund,
-			'terms' => $request->terms,
-			'privacy' => $request->privacy,    		
+    		'about' => $request->about,		
     	]);
     	$notification = array(
             'message' => 'Information updated!',

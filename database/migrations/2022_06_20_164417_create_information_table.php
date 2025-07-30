@@ -16,10 +16,6 @@ return new class extends Migration
         Schema::create('information', function (Blueprint $table) {
             $table->id();
             $table->text('about');
-            $table->text('refund');
-            $table->text('terms');
-            $table->text('privacy');
-
             $table->timestamps();
         });
     }

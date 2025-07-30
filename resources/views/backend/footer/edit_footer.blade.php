@@ -4,17 +4,6 @@
 
 <div class="content-body" style="min-height: 935px;">
     <div class="container-fluid">
-        <div class="modal fade" id="addProjectSidebar">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create Project</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
@@ -47,16 +36,12 @@
                                     <input class="form-control" name="phone" id="phone" type="text" value="{{$footer->phone}}">
                                 </div>
                                 <div class="form-group">
-                                    <label class="info-title">Facebook</label>
-                                    <input class="form-control" name="facebook" id="facebook" type="text" value="{{$footer->facebook}}">
+                                    <label class="info-title">Linkein</label>
+                                    <input class="form-control" name="linkedin" id="linkedin" type="text" value="{{$footer->linkedin}}">
                                 </div>
                                 <div class="form-group">
-                                    <label class="info-title">Instagram</label>
-                                    <input class="form-control" name="instagram" id="instagram" type="text" value="{{$footer->instagram}}">
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Youtube</label>
-                                    <input class="form-control" name="youtube" id="youtube" type="text" value="{{$footer->youtube}}">
+                                    <label class="info-title">Github</label>
+                                    <input class="form-control" name="github" id="github" type="text" value="{{$footer->github}}">
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title">Footer Credit</label>

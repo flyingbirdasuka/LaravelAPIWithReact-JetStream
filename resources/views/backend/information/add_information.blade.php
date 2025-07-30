@@ -4,17 +4,6 @@
 
 <div class="content-body" style="min-height: 935px;">
     <div class="container-fluid">
-        <div class="modal fade" id="addProjectSidebar">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create Project</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
@@ -35,20 +24,8 @@
                             <form method="post" action="{{route('information.store')}}" >
                                 @csrf
                                 <div class="form-group">
-                                    <label class="info-title">About Information</label>
+                                    <label class="info-title">About Me</label>
                                     <textarea class="form-control" name="about" id="summernote"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Refund Policy</label>
-                                    <textarea class="form-control" name="refund" id="summernote2"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Terms and Condition</label>
-                                    <textarea class="form-control" name="terms" id="summernote3"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="info-title">Privay Policy</label>
-                                    <textarea class="form-control" name="privacy" id="summernote4"></textarea>
                                 </div>
                                
                                 <input type="submit" class="btn btn-success" value="Add Information">
@@ -65,7 +42,7 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script type="text/javascript">
-    $('#summernote,#summernote2, #summernote3, #summernote4 ').summernote({
+    $('#summernote').summernote({
         height: 400
     });
 </script>

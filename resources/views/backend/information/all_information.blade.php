@@ -4,36 +4,6 @@
 
 <div class="content-body" style="min-height: 935px;">
     <div class="container-fluid">
-        <div class="modal fade" id="addProjectSidebar">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create Project</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label class="text-black font-w500">Project Name</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="text-black font-w500">Deadline</label>
-                                <input type="date" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="text-black font-w500">Client Name</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-primary">CREATE</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
@@ -54,21 +24,13 @@
                             <table class="table table-responsive-md">
                                 <thead>
                                     <tr>
-                                        <th><strong>ABOUT</strong></th>
-                                        <th><strong>REFUND POLICY</strong></th>
-                                        <th><strong>TERMS AND CONDITIONS</strong></th>
-                                        <th><strong>PRIVACY AND POLICY</strong></th>
-                                        <th><strong></strong></th>
-                                        <th></th>
+                                        <th><strong>ABOUT ME</strong></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($result as $item)
                                     <tr>
                                         <td>{{ Str::limit($item->about, 20, '...')}}</td>
-                                        <td>{{ Str::limit($item->refund, 20, '...')}}</td>
-                                        <td>{{ Str::limit($item->terms, 20, '...')}}</td>
-                                        <td>{{ Str::limit($item->privacy, 20, '...')}}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <div class="d-flex">
