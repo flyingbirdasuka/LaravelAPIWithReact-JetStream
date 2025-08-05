@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title">Video URL</label>
-                                    <input id="video" class="form-control" name="video_url" id="video_url" type="file" class="custom-file-input">
+                                    <input class="form-control custom-file-input" name="video_url" id="video" type="file">
                                 </div>
                                  <div class="form-group">
                                     <video width="320" height="240" controls>
