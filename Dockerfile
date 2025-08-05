@@ -38,7 +38,9 @@ RUN chown -R www-data:www-data /var/www/html
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Fix permissions for storage and cache directories
-RUN chown -R www-data:www-data storage bootstrap/cache
+RUN mkdir -p storage/app/public/videos \
+ && chown -R www-data:www-data storage bootstrap/cache \
+ && chmod -R 775 storage bootstrap/cache
 
 # Expose port 80 to be used by the container
 EXPOSE 80
