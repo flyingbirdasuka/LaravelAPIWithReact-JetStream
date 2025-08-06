@@ -49,8 +49,8 @@
                                     <input class="form-control" name="filter" id="fileter" type="text">
                                 </div>
                                 <div class="form-group">
-                                    <label class="info-title">Video URL</label>
-                                    <input class="form-control custom-file-input" name="video_url" id="video" type="file">
+                                    <label class="info-title">YouTube Video URL</label>
+                                    <input class="form-control" name="video_url" id="video_url" type="url" placeholder="https://www.youtube.com/watch?v=abc123">
                                 </div>
                                  <div class="form-group">
                                     <video width="320" height="240" controls>
