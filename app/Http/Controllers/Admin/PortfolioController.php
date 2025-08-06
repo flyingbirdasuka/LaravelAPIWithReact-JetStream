@@ -36,45 +36,54 @@ class PortfolioController extends Controller
         return view('backend.portfolio.add_portfolio');
     }
 
-    public function storePortfolio(Request $request){
-        $request->validate([
-            'title' => 'required',
-            'short_description' => 'required',
-            'small_img' => 'required',       
-        ], [
-            'title.required' => 'Input Title',
-            'short_description.required' => 'Input Short Description',
-        ]);
+    public function storePortfolio(Request $request)
+{
+    $request->validate([
+        'title' => 'required',
+        'short_description' => 'required',
+        'small_img' => 'required|image',
+        'video_url' => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:51200', // max:51200 = 50MB
+    ], [
+        'title.required' => 'Input Title',
+        'short_description.required' => 'Input Short Description',
+    ]);
 
-        $image = $request->file('small_img');
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(512, 512)->save('upload/portfolio/'. $name_gen); 
-        //$save_url = 'http://udemy-rapi.test/upload/portfolio/' . $name_gen;
-        $save_url = env('APP_URL', false) . '/upload/portfolio/' . $name_gen;
-        
+    // Handle image upload
+    $image = $request->file('small_img');
+    $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+    Image::make($image)->resize(512, 512)->save('upload/portfolio/' . $name_gen);
+    $save_url = env('APP_URL', false) . '/upload/portfolio/' . $name_gen;
 
-        $fileName = $request->file('video_url')->getClientOriginalName();
+    // Safe video upload
+    $video_url = null;
+
+    if ($request->hasFile('video_url') && $request->file('video_url')->isValid()) {
+        $videoFile = $request->file('video_url');
+        $fileName = time() . '_' . $videoFile->getClientOriginalName();
         $filePath = 'videos/' . $fileName;
-        $isFileUploaded = Storage::disk('public')->put($filePath, file_get_contents($request->file('video_url')));
+
+        Storage::disk('public')->put($filePath, file_get_contents($videoFile));
         $video_url = Storage::disk('public')->url($filePath);
-
-        Portfolio::insert([
-            'title' => $request->title,
-            'short_description' => $request->short_description,
-            'small_img'  => $save_url,  
-            'long_description'  => $request->long_description,   
-            'skill_all'  => $request->skill_all,  
-            'filter'  => $request->filter,  
-            'video_url'  => $video_url,    
-        ]);
-
-        $notification = array(
-            'message' => 'portfolio added!',
-            'alert-type' => 'success'
-        );
-        return redirect()->route('portfolio.all')->with($notification);
     }
 
+    // Insert into database
+    Portfolio::insert([
+        'title' => $request->title,
+        'short_description' => $request->short_description,
+        'small_img' => $save_url,
+        'long_description' => $request->long_description,
+        'skill_all' => $request->skill_all,
+        'filter' => $request->filter,
+        'video_url' => $video_url,
+    ]);
+
+    $notification = [
+        'message' => 'Portfolio added!',
+        'alert-type' => 'success',
+    ];
+
+    return redirect()->route('portfolio.all')->with($notification);
+}
     public function editPortfolio($id){
         $portfolio = Portfolio::findOrFail($id);
         return view('backend.portfolio.edit_portfolio')->with('portfolio', $portfolio);
