@@ -42,7 +42,6 @@ class PortfolioController extends Controller
         'title' => 'required',
         'short_description' => 'required',
         'small_img' => 'required|image',
-        'video_url' => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:51200', // max:51200 = 50MB
     ], [
         'title.required' => 'Input Title',
         'short_description.required' => 'Input Short Description',
@@ -54,18 +53,6 @@ class PortfolioController extends Controller
     Image::make($image)->resize(512, 512)->save('upload/portfolio/' . $name_gen);
     $save_url = env('APP_URL', false) . '/upload/portfolio/' . $name_gen;
 
-    // Safe video upload
-    $video_url = null;
-
-    if ($request->hasFile('video_url') && $request->file('video_url')->isValid()) {
-        $videoFile = $request->file('video_url');
-        $fileName = time() . '_' . $videoFile->getClientOriginalName();
-        $filePath = 'videos/' . $fileName;
-
-        Storage::disk('public')->put($filePath, file_get_contents($videoFile));
-        $video_url = Storage::disk('public')->url($filePath);
-    }
-
     // Insert into database
     Portfolio::insert([
         'title' => $request->title,
@@ -74,7 +61,7 @@ class PortfolioController extends Controller
         'long_description' => $request->long_description,
         'skill_all' => $request->skill_all,
         'filter' => $request->filter,
-        'video_url' => $video_url,
+        'video_url' => $request->video_url,
     ]);
 
     $notification = [
